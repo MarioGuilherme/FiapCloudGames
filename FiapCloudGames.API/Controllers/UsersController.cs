@@ -13,6 +13,7 @@ public class UsersController(IUserService userService) : ControllerBase {
     private readonly IUserService _userService = userService;
 
     [HttpGet]
+    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RestResponse<IEnumerable<UserViewModel>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(RestResponse))]
@@ -24,6 +25,7 @@ public class UsersController(IUserService userService) : ControllerBase {
     }
 
     [HttpGet("{userId}")]
+    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RestResponse<UserViewModel>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(RestResponse))]
@@ -36,6 +38,7 @@ public class UsersController(IUserService userService) : ControllerBase {
     }
 
     [HttpGet("me")]
+    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RestResponse<UserViewModel>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(RestResponse))]
@@ -47,6 +50,7 @@ public class UsersController(IUserService userService) : ControllerBase {
     }
 
     [HttpPut("{userId}")]
+    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RestResponse<UserViewModel>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(RestResponse))]
@@ -61,6 +65,7 @@ public class UsersController(IUserService userService) : ControllerBase {
     }
 
     [HttpDelete("{userId}")]
+    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(RestResponse))]

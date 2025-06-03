@@ -15,5 +15,5 @@ public class GamesController : ControllerBase {
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(RestResponse))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(RestResponse))]
     [Authorize(Roles = nameof(UserType.Admin))]
-    public Task<IActionResult> Register() => Task.FromResult<IActionResult>(this.Ok()); // Apenas demonstrar erro 403 de permissão
+    public Task<IActionResult> Register() => Task.FromResult<IActionResult>(this.Ok(Array.Empty<int>())); // Apenas demonstrar erro 403 de permissão
 }
