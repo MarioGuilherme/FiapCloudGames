@@ -1,0 +1,13 @@
+NOME O GRUPO: Grupo 33
+
+PARTICIPANTES E USERNAMES NO DISCORD: Mário Guilherme de Andrade Rodrigues - Mário Guilherme - RM 361492
+
+LINK DA DOCUMENTAÇÃO:
+- [Event Storming - Criação de Usuários]
+https://miro.com/welcomeonboard/RVZxNkwwVkJ4WE1JTXd4KzN0NnpCOGxsNmJhaEpSYnJVRUsyRFkrT0FhcFBkMW85d3pBK0Y4YlFPMzJBaUx6YWlIR1NYRGZQUHdKNndCTFhiMklKU3lhaGJ3MTFLS0pvR2IyZE81WkJwRk1LYTVLcU4xZU5BZ2psY3lreEt3aUFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=843378687033
+- [Event Storming - Criação de Jogos]
+https://miro.com/welcomeonboard/MFpqVnY3MFZrQkJGZGdHOERUVk1QazN4bS9lZEVxS3gvVmpOa0ZYWE43UGNMSCtGZS9rN09Na2hwRlNRSmNaMm1NQ0J3cldxZWNRTWxZTlc1R0RENWlhaGJ3MTFLS0pvR2IyZE81WkJwRk4wK1plaUh6RDdPeVkzTXZJaTFxNUFQdGo1ZEV3bUdPQWRZUHQzSGl6V2NBPT0hdjE=?share_link_id=438754409426
+
+LINK DO REPOSITÓRIO: https://github.com/MarioGuilherme/FiapCloudGames
+
+LINK DO VÍDEO YOUTUBE: 
