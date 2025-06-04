@@ -21,10 +21,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new() {
         Title = "API - Fiap Cloud Games",
-        Description = "Developed by Mário Guilherme de Andrade Rodrigues",
+        Description = "Developed by Mï¿½rio Guilherme de Andrade Rodrigues",
         Version = "v1",
         Contact = new() {
-            Name = "Mário Guilherme de Andrade Rodrigues",
+            Name = "Mï¿½rio Guilherme de Andrade Rodrigues",
             Email = "marioguilhermedev@gmail.com"
         },
         License = new() {
@@ -55,14 +55,15 @@ builder.Services.AddSwaggerGen(c => {
 
 WebApplication app = builder.Build();
 
-#region Garante a criação do banco de dados na inicialização
+#region Garante a criaï¿½ï¿½o do banco de dados na inicializaï¿½ï¿½o
 try {
     using AsyncServiceScope asyncServiceScope = app.Services.CreateAsyncScope();
     IServiceProvider services = asyncServiceScope.ServiceProvider;
     FiapCloudGamesDbContext context = services.GetRequiredService<FiapCloudGamesDbContext>();
-    await context.Database.MigrateAsync();
+    if ((await context.Database.GetPendingMigrationsAsync()).Any())
+        await context.Database.MigrateAsync();
 } catch (Exception ex) {
-    Console.WriteLine($"Erro durante inicialização do banco! {ex.Message}");
+    Console.WriteLine($"Erro durante inicializaï¿½ï¿½o do banco! {ex.Message}");
 }
 #endregion
 

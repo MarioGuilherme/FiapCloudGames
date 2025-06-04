@@ -52,7 +52,7 @@ public class UserService(IUserRepository userRepository, IAuthService authServic
         if (await this._userRepository.EmailInUseAsync(inputModel.Email))
             throw new EmailAlreadyInUseException();
 
-        user.Update(inputModel.Name, inputModel.Email, HashPassword(inputModel.Password));
+        user.Update(inputModel.Name, inputModel.Email);
 
         await this._userRepository.UpdateAsync(user);
         return RestResponse<UserViewModel>.Success(UserViewModel.FromEntity(user));

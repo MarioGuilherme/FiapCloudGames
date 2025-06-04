@@ -24,9 +24,8 @@ public class User {
         this.UserType = userType;
     }
 
-    public void Update(string name, string email, string password) {
+    public void Update(string name, string email) {
         this.Name = name;
         this.Email = email;
-        this.Password = password;
     }
 }

@@ -22,7 +22,7 @@ public class InputModelValidators {
     [Fact]
     public void UpdateInputModelValidate_ShouldBeInvalid_WhenEmailIsInvalid() {
         // Arrange
-        UpdateUserInputModel updateUserInputModel = new(1, new("Nome válido", "emailInvalidogmail.com", "asd56$Ád"));
+        UpdateUserInputModel updateUserInputModel = new(1, new("Nome válido", "emailInvalidogmail.com"));
 
         // Act
         ValidationResult result = new UpdateUserInputModelValidator().Validate(updateUserInputModel);

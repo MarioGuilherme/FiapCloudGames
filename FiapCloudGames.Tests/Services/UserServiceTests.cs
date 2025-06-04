@@ -38,7 +38,7 @@ public class UserServiceTests {
         this._repository.Setup(r => r.GetByIdTrackingAsync(It.IsAny<int>())).ReturnsAsync(user);
 
         // Act
-        RestResponse<UserViewModel> restResponse = await this._userService.UpdateUserAsync(new(1, new("Usuário 32", "usuario32@gmail.com", "novaSenhaForte2")));
+        RestResponse<UserViewModel> restResponse = await this._userService.UpdateUserAsync(new(1, new("Usuário 32", "usuario32@gmail.com")));
 
         // Assert
         this._repository.Verify(repo => repo.UpdateAsync(It.IsAny<User>()), Times.Once);
@@ -49,7 +49,7 @@ public class UserServiceTests {
     [Fact]
     public async Task UpdateUserById_ShouldThrowException_WhenUserNotFound() {
         // Arrange
-        UpdateUserInputModel updateUserInputModel = new(1, new("Usuário 3", "usuario3@gmail.com", "senhaForte"));
+        UpdateUserInputModel updateUserInputModel = new(1, new("Usuário 3", "usuario3@gmail.com"));
         this._repository.Setup(r => r.GetByIdTrackingAsync(It.IsAny<int>())).ReturnsAsync((User?)null);
 
         // Act - Assert
