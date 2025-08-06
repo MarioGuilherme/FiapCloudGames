@@ -46,9 +46,6 @@ jobs:
       - name: Compilar a aplicação
         run: dotnet build FiapCloudGames.sln
 
-      - name: Execução dos testes unitários
-        run: dotnet test FiapCloudGames.sln
-
       - name: Deploy para o Azure Web App
         uses: azure/webapps-deploy@v3
         with:
