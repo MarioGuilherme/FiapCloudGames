@@ -4,9 +4,8 @@ COPY . .
 RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
 RUN dotnet publish "./FiapCloudGames.API/FiapCloudGames.API.csproj" \
     -c Release -o /publish --no-self-contained --no-restore
-COPY ./src/FiapCloudGames.API/appsettings.docker.json /publish/appsettings.docker.json
+COPY ./src/FiapCloudGames.API/appsettings.json /publish/appsettings.json
 
-# ---------- runtime ----------
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /App
 COPY --from=build /app/publish .
