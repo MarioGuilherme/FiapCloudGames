@@ -15,7 +15,7 @@ RUN dotnet publish -c Release -o out
 RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
 RUN dotnet publish "./FiapCloudGames.API/.csproj" \
     -c Release -o /app/publish --no-self-contained --no-restore
-COPY ./FiapCloudGames/FiapCloudGames.API/appsettings.json /App/publish/appsettings.json
+COPY ./App/FiapCloudGames/FiapCloudGames.API/appsettings.json /App/publish/appsettings.json
 
 # Build com a runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
