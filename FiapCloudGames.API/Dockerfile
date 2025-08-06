@@ -15,12 +15,12 @@ RUN dotnet publish -c Release -o out
 RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
 RUN dotnet publish "./FiapCloudGames.API/.csproj" \
     -c Release -o /app/publish --no-self-contained --no-restore
-COPY ./FiapCloudGames.API/appsettings.docker.json /app/publish/appsettings.json
+COPY ./FiapCloudGames.API/appsettings.json /App/publish/appsettings.json
 
 # Build com a runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /App
-COPY --from=build /app/publish .
+COPY --from=build-env /App/publish .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "FiapCloudGames.API.dll"]
