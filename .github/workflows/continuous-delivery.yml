@@ -21,10 +21,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       - name: Build Docker image
-        run: cd FiapCloudGames/FiapCloudGames.API && docker build ./FiapCloudGames/FiapCloudGames.API/
-
-      - name: Push Docker image
-        run: docker push marioguilhermedev/fiapcloudgames:latest
+        run: docker build -t marioguilhermedev/fiapcloudgames:latest .
 
       - name: Azure Login
         uses: azure/login@v2.3.0
