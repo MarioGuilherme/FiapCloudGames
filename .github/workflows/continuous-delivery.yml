@@ -21,10 +21,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       - name: Build Docker image
-        run: docker build -t ${{ secrets.REGISTRY_USERNAME }}/myapp:latest .
+        run: docker build -t marioguilhermedev/fiapcloudgames:latest .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.REGISTRY_USERNAME }}/myapp:latest
+        run: docker push marioguilhermedev/fiapcloudgames:latest
 
       - name: Azure Login
         uses: azure/login@v2.3.0
