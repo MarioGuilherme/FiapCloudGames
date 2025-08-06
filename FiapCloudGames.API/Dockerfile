@@ -14,7 +14,8 @@ RUN dotnet publish -c Release -o out
 # Restore as distinct layers
 RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
 RUN dotnet publish "./FiapCloudGames.API/.csproj" \
-    -c Release -o /app/publish --no-self-contained --no-restore
+    -c Release -o /app/publish --no-self-contained --no-restore \
+    ls -lha
 COPY ./App/FiapCloudGames/FiapCloudGames.API/appsettings.json /App/publish/appsettings.json
 
 # Build com a runtime
