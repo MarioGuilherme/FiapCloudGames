@@ -26,7 +26,7 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-          tenant-id: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Container Instances
         uses: azure/CLI@v1
