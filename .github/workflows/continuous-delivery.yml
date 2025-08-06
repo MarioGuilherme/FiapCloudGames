@@ -23,6 +23,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t marioguilhermedev/fiapcloudgames:latest .
 
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: .
+          tags: 'marioguilhermedev/fiapcloudgames:latest'
+          push: true
+
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
@@ -33,13 +40,13 @@ jobs:
         with:
           inlineScript: |
             az container create \
-            --resource-group myResourceGroup \
+            --resource-group main \
             --name myapp \
-            --image ${{ secrets.REGISTRY_USERNAME }}/myapp:latest \
+            --image marioguilhermedev/fiapcloudgames:latest \
             --dns-name-label myappdemo \
             --ports 80 \
             --restart-policy OnFailure || \
             az container update \
-            --resource-group myResourceGroup \
+            --resource-group main \
             --name myapp \
-            --image ${{ secrets.REGISTRY_USERNAME }}/myapp:latest
+            --image marioguilhermedev/fiapcloudgames:latest
