@@ -35,9 +35,23 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Container App
-        run: |
-          az containerapp update \
-            --name fiapcloudgameswebapi \
-            --resource-group main \
-            --image fcg.azurecr.io/fiapcloudgameswebapi:latest
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      - name: 🏗Build do projeto
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publicar o projeto
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: Deploy para o Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: projetofiapcg
+          slot-name: production
+          package: ./publish
