@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - master
-
+env:
+  FiapCloudGamesConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
+  
 jobs:
   deploy:
     name: Executando o Job de Publicação
