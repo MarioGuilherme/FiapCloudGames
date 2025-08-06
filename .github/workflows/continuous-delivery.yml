@@ -35,18 +35,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Container Instances
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az container create \
+      - name: Deploy to Azure Container App
+        run: |
+          az containerapp update \
+            --name fiapcloudgameswebapi \
             --resource-group main \
-            --name myapp \
-            --image marioguilhermedev/fiapcloudgames:latest \
-            --dns-name-label myappdemo \
-            --ports 80 \
-            --restart-policy OnFailure || \
-            az container update \
-            --resource-group main \
-            --name myapp \
-            --image marioguilhermedev/fiapcloudgames:latest
+            --image fcg.azurecr.io/fiapcloudgameswebapi:latest
