@@ -1,14 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /App
 COPY . .
-RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
-RUN dotnet publish "./FiapCloudGames.API/FiapCloudGames.API.csproj" \
+RUN dotnet restore "./FiapCloudGames.API.csproj"
+RUN dotnet publish "./FiapCloudGames.API.csproj" \
     -c Release -o /publish --no-self-contained --no-restore
-COPY ./FiapCloudGames.API/appsettings.json /publish/appsettings.json
+COPY ./appsettings.json /publish/appsettings.json
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /App
 COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-ENTRYPOINT ["dotnet","FCG.API.dll"]
+ENTRYPOINT ["dotnet","FiapCloudGames.API.dll"]
