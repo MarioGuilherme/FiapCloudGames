@@ -1,0 +1,48 @@
+name: ContinuousD - Publicação da aplicação ao Azure Container App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Executando o Job de Publicação
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonagem do código fonte
+        uses: actions/checkout@v4
+
+      - name: Docker Login
+        uses: docker/login-action@v3.4.0
+        with:
+          username: 'marioguilhermedev'
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.REGISTRY_USERNAME }}/myapp:latest .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.REGISTRY_USERNAME }}/myapp:latest
+
+      - name: Azure Login
+        uses: azure/login@v2.3.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Container Instances
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az container create \
+            --resource-group myResourceGroup \
+            --name myapp \
+            --image ${{ secrets.REGISTRY_USERNAME }}/myapp:latest \
+            --dns-name-label myappdemo \
+            --ports 80 \
+            --restart-policy OnFailure || \
+            az container update \
+            --resource-group myResourceGroup \
+            --name myapp \
+            --image ${{ secrets.REGISTRY_USERNAME }}/myapp:latest
