@@ -43,11 +43,11 @@ jobs:
       - name: Baixar as dependências (dotnet restore)
         run: dotnet restore FiapCloudGames.sln
 
-      - name: Build do projeto
-        run: dotnet build ./FiapCloudGames/FiapCloudGamesAPI.csproj --configuration Release --no-restore
+      - name: Compilar a aplicação
+        run: dotnet build FiapCloudGames.sln
 
-      - name: Publicar o projeto
-        run: dotnet publish ./FiapCloudGames/FiapCloudGamesAPI.csproj --configuration Release --output ./publish
+      - name: Execução dos testes unitários
+        run: dotnet test FiapCloudGames.sln
 
       - name: Deploy para o Azure Web App
         uses: azure/webapps-deploy@v3
