@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       - name: Build Docker image
-        run: docker build .
+        run: cd FiapCloudGames/FiapCloudGames.API && docker build ./FiapCloudGames/FiapCloudGames.API/
 
       - name: Push Docker image
         run: docker push marioguilhermedev/fiapcloudgames:latest
