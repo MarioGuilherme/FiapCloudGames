@@ -13,7 +13,7 @@ RUN dotnet publish -c Release -o out
 
 # Restore as distinct layers
 RUN dotnet restore "./FiapCloudGames/FiapCloudGames.API.csproj"
-RUN dotnet publish "./FiapCloudGames/FiapCloudGames.API/.csproj" \
+RUN dotnet publish "./FiapCloudGames/FiapCloudGames.API.csproj" \
     -c Release -o out
 COPY . .
 
