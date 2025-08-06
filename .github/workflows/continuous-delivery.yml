@@ -45,6 +45,9 @@ jobs:
 
       - name: Compilar a aplicação
         run: dotnet build FiapCloudGames.sln
+        
+      - name: Publicar o projeto
+        run: dotnet publish FiapCloudGames.sln --configuration Release --output ./publish
 
       - name: Deploy para o Azure Web App
         uses: azure/webapps-deploy@v3
