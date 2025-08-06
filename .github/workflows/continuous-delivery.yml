@@ -24,9 +24,9 @@ jobs:
         run: docker build -t marioguilhermedev/fiapcloudgames:latest .
 
       - name: Azure Login
-        uses: azure/login@v2.3.0
+        uses: Azure/login@v2.3.0
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          tenant-id: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Container Instances
         uses: azure/CLI@v1
