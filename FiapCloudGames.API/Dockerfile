@@ -15,7 +15,7 @@ WORKDIR /src
 COPY ["FiapCloudGames.API/FiapCloudGames.API.csproj", "FiapCloudGames.API/"]
 COPY ["FiapCloudGames.Application/FiapCloudGames.Application.csproj", "FiapCloudGames.Application/"]
 COPY ["FiapCloudGames.Domain/FiapCloudGames.Domain.csproj", "FiapCloudGames.Domain/"]
-COPY ["FiapCloudGames.Infrastructure/FiapCloudGames.Infrastructure.csproj", "FiapCloudGames.Infrastructure/"]
+#COPY ["FiapCloudGames.Infrastructure/FiapCloudGames.Infrastructure.csproj", "FiapCloudGames.Infrastructure/"]
 RUN dotnet restore "./FiapCloudGames.API/FiapCloudGames.API.csproj"
 COPY . .
 WORKDIR "/src/FiapCloudGames.API"
