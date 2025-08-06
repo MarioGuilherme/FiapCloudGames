@@ -17,7 +17,7 @@ public static class InfrastructureModule {
     }
 
     private static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration) {
-        string connectionString = configuration.GetConnectionString("DefaultConnection")!;
+        string connectionString = Environment.GetEnvironmentVariable("FiapCloudGamesConnectionString");
         services.AddDbContext<FiapCloudGamesDbContext>(options => options.UseSqlServer(connectionString));
 
         return services;
