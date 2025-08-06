@@ -35,19 +35,19 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Download do SDK do .NET
+        uses: actions/setup-dotnet@v3.4.2
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: 8.0.x
 
-      - name: Restaurar dependências
-        run: dotnet restore
+      - name: Baixar as dependências (dotnet restore)
+        run: dotnet restore FiapCloudGames.sln
 
-      - name: 🏗Build do projeto
-        run: dotnet build --configuration Release --no-restore
+      - name: Build do projeto
+        run: dotnet build ./FiapCloudGames/FiapCloudGamesAPI.csproj --configuration Release --no-restore
 
       - name: Publicar o projeto
-        run: dotnet publish --configuration Release --output ./publish
+        run: dotnet publish ./FiapCloudGames/FiapCloudGamesAPI.csproj --configuration Release --output ./publish
 
       - name: Deploy para o Azure Web App
         uses: azure/webapps-deploy@v3
